@@ -4,7 +4,7 @@ import { Droppable } from "./Droppable";
 import TaskColumn from "./TaskColumn";
 import TodoListForm from "./TodoListForm";
 
-const ToDoList = ({ initialTodos }) => {
+const ToDoList = ({ todos: initialTodos }) => {
   const [todos, setTodos] = useState(initialTodos);
   const [deleteMessage, setDeleteMessage] = useState("");
 
@@ -32,7 +32,7 @@ const ToDoList = ({ initialTodos }) => {
       ...prevTodos,
       { id: crypto.randomUUID(), text: inputText, status: "" },
     ]);
-    console.log(crypto.randomUUID());
+    // console.log(crypto.randomUUID());
     setinputText("");
   };
 

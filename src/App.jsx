@@ -4,7 +4,7 @@ import ToDoList from "./components/ToDoList";
 function App() {
   return (
     <ToDoList
-      initialTodos={[
+      todos={[
         { id: 1, text: "buy milk", status: "to-do" },
         { id: 2, text: "wash bike", status: "in-progress" },
         { id: 3, text: "do the budget", status: "done" },
