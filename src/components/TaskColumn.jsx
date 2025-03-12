@@ -1,5 +1,5 @@
-import { Draggable } from "../components/Draggable";
-import { Droppable } from "../components/Droppable";
+import { Draggable } from "./Draggable";
+import { Droppable } from "./Droppable";
 
 var h2Style = (backgroundcolor) => ({
   backgroundColor: backgroundcolor ? backgroundcolor : "red",

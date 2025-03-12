@@ -1,16 +1,8 @@
 import { useState } from "react";
 import UnallocatedTasks from "./UnallocatedTasks";
 
-function TodoListForm({ todos, setTodos }) {
-  const [inputTask, setinputTask] = useState("");
-  const handleAddTask = () => {
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      { id: crypto.randomUUID(), text: inputTask, status: "" },
-    ]);
-    console.log(crypto.randomUUID());
-    setinputTask("");
-  };
+function TodoListForm({ todos, onAddTodo }) {
+  const [inputText, setinputText] = useState("");
 
   return (
     <div
@@ -27,13 +19,14 @@ function TodoListForm({ todos, setTodos }) {
         }}
         onSubmit={(e) => {
           e.preventDefault();
-          handleAddTask();
+          onAddTodo(inputText, setinputText);
         }}
       >
         <input
           type="text"
-          value={inputTask}
-          onChange={(e) => setinputTask(e.target.value)}
+          value={inputText}
+          onChange={(e) => setinputText(e.target.value)}
+          required
         />
         <button type="submit" style={{ paddingLeft: 10 }}>
           Add Task

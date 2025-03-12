@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { DndContext } from "@dnd-kit/core";
 import { Droppable } from "./Droppable";
-import TaskColumn from "../Ui/TaskColumn";
-import TodoListForm from "../Ui/TodoListForm";
+import TaskColumn from "./TaskColumn";
+import TodoListForm from "./TodoListForm";
 
-const ToDoList = ({ todosI }) => {
-  const [todos, setTodos] = useState(todosI);
+const ToDoList = ({ initialTodos }) => {
+  const [todos, setTodos] = useState(initialTodos);
   const [deleteMessage, setDeleteMessage] = useState("");
 
   function handleDragEnd(e) {
@@ -27,6 +27,14 @@ const ToDoList = ({ todosI }) => {
       );
     }
   }
+  const handleAddTodo = (inputText, setinputText) => {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: crypto.randomUUID(), text: inputText, status: "" },
+    ]);
+    console.log(crypto.randomUUID());
+    setinputText("");
+  };
 
   return (
     <DndContext onDragEnd={(e) => handleDragEnd(e)}>
@@ -38,7 +46,7 @@ const ToDoList = ({ todosI }) => {
           maxHeight: "99vh",
         }}
       >
-        <TodoListForm todos={todos} setTodos={setTodos} />
+        <TodoListForm todos={todos} onAddTodo={handleAddTodo} />
         <div
           style={{
             display: "grid",

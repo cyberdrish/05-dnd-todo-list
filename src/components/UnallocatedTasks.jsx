@@ -1,4 +1,4 @@
-import { Draggable } from "../components/Draggable";
+import { Draggable } from "./Draggable";
 
 function UnallocatedTasks({ todos }) {
   const unallocatedTask = todos.filter((task) => task && task.status === "");
